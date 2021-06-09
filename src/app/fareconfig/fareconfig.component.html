@@ -1,0 +1,444 @@
+<!-- <app-navbar></app-navbar> --
+<div class="wrapper">
+  <!-- Fare Configuration Level-1 starts -->
+  <!-- <div class="table-wrapper" style="overflow-x:auto;">
+    <div class="table-title">
+      <a href="/fareconfig/config"><button type="button" class="btn btn-primary add-new mr-3" >
+        Add Config
+      </button></a>
+      <div class="row">
+        <!-- <div class="col-sm-4">
+          <a href="/fareconfig/config"><button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New Configuration</button></a>
+          <button type="button" class="btn btn-primary add-new mr-3" data-toggle="modal" data-target="#exampleModal">
+              City List
+            </button>
+            
+        </div>  --
+        <div class="col-sm-8">
+          <h2>Fare <b>Configuration Level-1</b></h2>
+        </div>
+        <div class="col-sm-4">
+          <!-- <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button> --
+          
+          
+        </div>
+      </div>
+    </div>
+
+
+
+    <table id="tblFares" class="table table-bordered display responsive nowrap" width=100%>
+      <thead>
+        <tr>
+          <th width=70px>S.No.</th>
+          <th width=150px>Source</th>
+          <th width=150px>Destination</th>
+          <th width=150px>Route</th>
+          <th width=100px>Distance</th>
+          <th width=150px>Bus Type</th>
+          <th width=100px>Rate per KM</th>
+          <th width=100px>Fare</th>
+          <th width=150px>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Hyderabad</td>
+          <td>Vijayawada</td>
+          <td><select id="dropdownr1" class="form-control" name="dropdownr1" onchange="getdistance(this.id,'distance','kmrate','fare');">
+              <option value="">Please select...</option>
+              <option value="HYD-VJA-1" selected="selected">HYD-VJA-1</option>
+              <option value="HYD-VJA-2">HYD-VJA-2</option>
+              <option value="HYD-VJA-3">HYD-VJA-3</option>
+            </select>
+          </td>
+          <td><input type="text" class="form-control" name="distance" id="distance" value="330" onchange="farecalc('kmrate',this.id,'fare');" readonly="readonly"></td>
+          <td><select id="dropdown1" class="form-control" name="dropdown1" onchange="farecalc('kmrate','distance','fare');">
+              <option value="">Please select...</option>
+              <option value="VOLVO B11R">VOLVO B11R</option>
+              <option value="AC SLEEPER">AC SLEEPER</option>
+            </select>
+          </td>
+          <td><input type="text" class="form-control" name="kmrate" id="kmrate" readonly="readonly"></td>
+          <td><input type="text" class="form-control" name="fare" id="fare" readonly="readonly"></td>
+          <td><a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+            <!-- <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                          <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a> --
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Hyderabad</td>
+          <td>Bengaluru</td>
+          <td><select id="dropdownr2" class="form-control" name="dropdownr2" onchange="getdistance(this.id,'distance2','kmrate2','fare2');">
+              <option value="">Please select...</option>
+              <option value="HYD-BLR-1">HYD-BLR-1</option>
+              <option value="HYD-BLR-2" selected="selected">HYD-BLR-2</option>
+              <option value="HYD-BLR-3">HYD-BLR-3</option>
+            </select>
+          </td>
+          <td><input type="text" class="form-control" name="distance2" id="distance2" value="575" onchange="farecalc('kmrate2',this.id,'fare2');" readonly="readonly"></td>
+          <td><select id="dropdown3" class="form-control" name="dropdown3" onchange="farecalc('kmrate2','distance2','fare2');">
+              <option value="">Please select...</option>
+              <option value="VOLVO B11R">VOLVO B11R</option>
+              <option value="AC SLEEPER">AC SLEEPER</option>
+            </select>
+          </td>
+          <td><input type="text" class="form-control" name="kmrate2" id="kmrate2" readonly="readonly"></td>
+          <td><input type="text" class="form-control" name="fare2" id="fare2" readonly="readonly"></td>
+          <td><a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+            <!-- <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                          <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a> --
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Hyderabad</td>
+          <td>Chennai</td>
+          <td><select id="dropdownr3" class="form-control" name="dropdownr3" onchange="getdistance(this.id,'distance3','kmrate3','fare3');">
+              <option value="">Please select...</option>
+              <option value="HYD-CHN-1">HYD-CHN-1</option>
+              <option value="HYD-CHN-2">HYD-CHN-2</option>
+              <option value="HYD-CHN-3" selected="selected">HYD-CHN-3</option>
+            </select>
+          </td>
+          <td><input type="text" class="form-control" name="distance3" id="distance3" value="626" onchange="farecalc('kmrate3',this.id,'fare3');" readonly="readonly"></td>
+          <td><select id="dropdown4" class="form-control" name="dropdown4" onchange="farecalc('kmrate3','distance3','fare3');">
+              <option value="">Please select...</option>
+              <option value="VOLVO B11R">VOLVO B11R</option>
+              <option value="AC SLEEPER">AC SLEEPER</option>
+            </select>
+          </td>
+          <td><input type="text" class="form-control" name="kmrate3" id="kmrate3" readonly="readonly"></td>
+          <td><input type="text" class="form-control" name="fare3" id="fare3" readonly="readonly"></td>
+          <td><a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+            <!-- <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                          <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a> --
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+  <!-- Fare Configuration Level-1 ends -->
+  <!-- Fare Configuration Level-2 starts -->
+  <!-- <div class="table-wrapper" style="overflow-x:auto;">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-8">
+          <h2>Fare <b>Configuration Level-2</b></h2>
+        </div>
+      </div>
+    </div>
+    <table id="tblFares1" class="table table-bordered display responsive nowrap" width=100%>
+      <thead>
+        <tr>
+          <th width=50px>S.No.</th>
+          <th width=100px>Route</th>
+          <th width=150px>Bus Type</th>
+          <th width=150px>Fare</th>
+          <th width=100px>Lower Cap</th>
+          <th width=100px>Upper Cap</th>
+          <th width=100px>Action</th>
+          <th width=150px>Net Fare</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><select id="ddroute" class="form-control" name="ddroute" onchange="">
+              <option value="">Please select...</option>
+              <option value="HYD-VJA-1" selected="selected">HYD-VJA-1</option>
+              <option value="HYD-VJA-2">HYD-VJA-2</option>
+              <option value="HYD-VJA-3">HYD-VJA-3</option>
+            </select>
+          </td>
+          <td><select id="ddbustype" class="form-control" name="ddbustype" onchange="">
+              <option value="">Please select...</option>
+              <option value="VOLVO B11R">VOLVO B11R</option>
+              <option value="AC SLEEPER">AC SLEEPER</option>
+            </select>
+          </td>
+          <td><input type="text" class="form-control" name="txtfare" id="txtfare" value="1500" readonly="readonly"></td>
+          <td><select id="ddlcap" class="form-control" name="ddlcap" onchange="farecap(this.id);">
+              <option value="5%">5%</option>
+              <option value="10%">10%</option>
+              <option value="15%">15%</option>
+              <option value="20%">20%</option>
+              <option value="25%">25%</option>
+            </select>
+          </td>
+          <td><select id="dducap" class="form-control" name="dducap" onchange="farecap(this.id);" disabled="disabled">
+              <option value="10%">10%</option>
+              <option value="20%">20%</option>
+              <option value="30%">30%</option>
+              <option value="40%">40%</option>
+              <option value="50%">50%</option>
+            </select>
+          </td>
+          <td>
+            <label class="radio-inline">
+              <input type="radio" name="CaptypeRadio" id="lcap" value="Lower Cap" onclick="disablecapField()" checked>Lower Cap
+            </label> <label class="radio-inline">
+              <input type="radio" name="CaptypeRadio" id="ucap" value="Upper Cap" onclick="disablecapField()">Upper Cap
+            </label>
+          </td>
+          <td><input type="text" class="form-control" name="txtnetfare" id="txtnetfare" readonly="readonly"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+<!-- </div> -->
+
+
+
+
+<div class="col-md-12">
+  <div class="card main-card m-5">
+    <div class="card-header">
+      Routes
+    <div class="card-body" style="flex:none">
+        <div class="search-wrapper" [class.active]="isActive">
+            <div class="input-holder">
+              <input type="text" placeholder="Type to search" [(ngModel)]="term"  class="search-input" >
+              <button class="search-icon" (click)="isActive = true"><span></span></button>
+            </div>
+            <button class="close" (click)="isActive = false; term = null;"></button>
+          </div>              
+          <!-- <form class="form-inline my-2 my-lg-0">
+              (keyup)="search(term)"
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form> -->
+          
+    </div>
+
+
+    <div class="card-header-center">
+      <!-- <div class="text-center">
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker3" [(ngModel)]="flightSchedule.date" (dateChange)="ngOnInit()">
+      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+      <mat-datepicker #picker3></mat-datepicker>
+    </mat-form-field>
+    </div> -->
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" [(ngModel)]="recalculate" (change)="update()">
+      <label class="form-check-label" >Do not Recalculate me</label>
+    </div>
+    <div  class="btn-actions-pane-right">
+      
+      <button type="button" class="btn btn-primary add-new mr-3" (click)="openSmall1(content1)">
+        Add Routes
+      </button>
+  <button type="button" class="btn btn-primary add-new mr-3" (click)="refresh()">
+        Refresh Data <i class="fa fa-refresh" aria-hidden="true"></i>
+  </button>
+      <!-- <button class="btn btn-outline-primary" style="margin-left: 10px;" style="visibility:hidden;" id="batch" (click)="createbatch()"><span>Create Batch</span></button>
+      <button class="btn btn-outline-danger" style="margin-left: 10px;"><span class="fa fa-filter"></span></button> -->
+    </div>
+        </div>
+        <div class="table-responsive">
+         
+    <table  class="align-middle  mb-0 table table-borderless table-hover table-striped"> 
+      <thead >
+      <tr class="text-center">
+        <th scope="col">#</th>
+        <th scope="col">Source</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Slab</th>
+        <th scope="col">Distance</th>
+        <th scope="col">Non AC Seater</th>
+        <th scope="col">AC Seater</th>
+        <th scope="col">Non AC Sleeper</th>
+        <th scope="col">AC Sleeper</th>
+        <th scope="col">Multi Seater</th>
+        <th scope="col">Multi Sleeper</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <!-- <tr>
+        <td *ngIf="this.size == '0'">No Data Available<br><img src="./../../../assets/images/Loader.gif"></td>
+      </tr>  *ngFor ="let b of board$ | filter:term | slice: (page1-1) * pageSize1 : (page1-1) * pageSize1 + pageSize1; let i =index;" -->
+    <!-- </tbody>  *ngFor = "let size of pageSizeOptions1" [value]="size" (change)="selectPageSize($event)" -->
+    <!-- <tbody *ngIf="this.size == '0'" class="text-center">
+      <!-- <tr>
+        <td *ngIf="this.size == '0'">No Orders Available</td>
+        </tr> --
+        No Orders Available
+    </tbody> -->
+    <tbody class="text-center">
+        <tr *ngFor ="let c of config$ | filter:term | slice: (page-1) * pageSize : page * pageSize; let i = index; ">
+            <th scope="row">{{i+1}}</th>
+            <td>{{c.sourcecity}}</td>
+            <td>{{c.destinationcity}}</td>
+            <td>{{c.slab}}</td>
+            <td>{{c.distance}}</td>
+            <td *ngIf = "c.NON_AC_SEATER">{{c.NON_AC_SEATER}}</td>
+            <td *ngIf = "!c.NON_AC_SEATER">-</td>
+            <td  *ngIf = "c.AC_SEATER">{{c.AC_SEATER}}</td>
+            <td *ngIf = "!c.AC_SEATER">-</td>
+            <td *ngIf = "c.NON_AC_SLEEPER">{{c.NON_AC_SLEEPER}}</td>
+            <td *ngIf = "!c.NON_AC_SLEEPER">-</td>
+            <!-- <td *ngIf = "c.NON_AC_SLEEPER">{{c.NON_AC_SLEEPER}}</td>
+            <td *ngIf = "!c.NON_AC_SLEEPER">-</td> -->
+            <td *ngIf = "c.AC_SLEEPER">{{c.AC_SLEEPER}}</td>
+            <td *ngIf = "!c.AC_SLEEPER">-</td>
+            <td *ngIf = "c.MULTI_SEATER">{{c.MULTI_SEATER}}</td>
+            <td *ngIf = "!c.MULTI_SEATER">-</td>
+            <td *ngIf = "c.MULTI_SLEEPER">{{c.MULTI_SLEEPER}}</td>
+            <td *ngIf = "!c.MULTI_SLEEPER">-</td>
+            <!-- <td *ngIf = "c.asleeperu">{{c.asleeperu}}</td>
+            <td *ngIf = "!c.asleeperu">-</td> -->
+            <td><button class="btn" (click)="openSmall2(content2,c)"><i class="fa fa-edit"></i></button></td>
+            <!-- <td><button class="btn" data-toggle="modal" data-target="#exampleModal3" (click)="edit(c._id,c.cityname, c.statename)"><i class="fa fa-edit"></i></button></td> -->
+            <!-- <td>@mdo</td> -->
+          </tr>   
+    </tbody>
+    </table>
+    <div class="d-block p-4 card-footer">
+      <div class="d-flex w-100 justify-content-between">
+        <ngb-pagination [collectionSize]="size" [(page)]="page" [pageSize]="pageSize" [boundaryLinks]="true"></ngb-pagination>
+      </div>
+    </div>
+  </div>
+  
+    <!-- <div class="d-block p-4 card-footer">
+        <div class="d-flex w-100 justify-content-between">
+      <ngb-pagination [(page)]="page1"
+      [pageSize]="pageSize1"
+      [collectionSize]="this.size">
+    </ngb-pagination>
+    <div  class="btn-actions-pane-right">
+    <button class="btn btn-outline-primary" (click)="selectPageSize(200)">200</button>
+    <button class="btn btn-outline-primary" (click)="selectPageSize(500)">500</button>
+    <button class="btn btn-outline-primary" (click)="selectPageSize(1000)">1000</button>
+  </div>
+    <!-- <select class="custom-select" style="width: auto" name="pageSize1" (change)="selectPageSize($event)">
+        <option *ngFor = "let size of pageSizeOptions1" [value]="size">{{size}}</option>
+  </select> --
+  </div>
+  </div> -->
+  </div>
+</div>
+
+
+
+<!-- Modals -->
+<ng-template #content1 let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Add Route</h4>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Source City</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" [(ngModel)]="source" aria-describedby="emailHelp" placeholder="Enter Source City">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail12">Destination City</label>
+      <input type="text" class="form-control" id="exampleInputEmail12" [(ngModel)]="destination" aria-describedby="emailHelp" placeholder="Enter Destination City">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail13">Distance</label>
+      <input type="number" class="form-control" id="exampleInputEmail13" [(ngModel)]="distance" aria-describedby="emailHelp" placeholder="Enter Distance">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail14">Slab</label>
+      <!-- <ng-select [items]="slabs | unique" 
+           bindLabel="name"
+           [(ngModel)]="slab"
+        >
+      </ng-select> -->
+      <ng-select [(ngModel)]="slab">
+        <ng-option *ngFor="let slab of slabs" [value]="slab">{{slab}}</ng-option>
+     </ng-select>
+      <!-- <input type="text" class="form-control" id="exampleInputEmail14" [(ngModel)]="slab" aria-describedby="emailHelp" placeholder="Enter Slab"> -->
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    <button type="button" class="btn btn-primary" (click)="addroutes()">Add</button>
+  </div>
+</ng-template>
+
+
+<ng-template #content2 let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Edit Route</h4>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+  <div class="row">
+    <div class="col-md-6">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Source City</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" [(ngModel)]="source" aria-describedby="emailHelp" placeholder="Enter Source City" disabled>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail13">Distance</label>
+      <input type="number" class="form-control" id="exampleInputEmail13" [(ngModel)]="distance" aria-describedby="emailHelp" placeholder="Enter Distance">
+    </div>
+    <div class="form-group" *ngIf = "recalculate">
+      <label for="exampleInputEmail18">AC Sleeper</label>
+      <input type="number" class="form-control" id="exampleInputEmail18" [(ngModel)]="acsleeper" aria-describedby="emailHelp" placeholder="Enter Ac Sleeper Price">
+    </div>
+  
+  <div class="form-group" *ngIf = "recalculate">
+    <label for="exampleInputEmail16">AC Seater</label>
+    <input type="number" class="form-control" id="exampleInputEmail16" [(ngModel)]="acseater" aria-describedby="emailHelp" placeholder="Enter Ac Seater Price">
+  </div>
+  <div class="form-group" *ngIf = "recalculate">
+    <label for="exampleInputEmail18">MULTI SEATER</label>
+    <input type="number" class="form-control" id="exampleInputEmail20" [(ngModel)]="multiseater" aria-describedby="emailHelp" placeholder="Enter MULTI SEATER Price">
+  </div>
+</div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="exampleInputEmail12">Destination City</label>
+      <input type="text" class="form-control" id="exampleInputEmail12" [(ngModel)]="destination" aria-describedby="emailHelp" placeholder="Enter Destination City" disabled>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail14">Slab</label>
+      <!-- <ng-select [items]="slabs | unique" 
+           bindLabel="name"
+           [(ngModel)]="slab"
+        >
+      </ng-select> -->
+      <ng-select [(ngModel)]="slab">
+        <ng-option *ngFor="let slab of slabs" [value]="slab">{{slab}}</ng-option>
+     </ng-select>
+      <!-- <input type="text" class="form-control" id="exampleInputEmail14" [(ngModel)]="slab" aria-describedby="emailHelp" placeholder="Enter Slab"> -->
+    </div>
+    <div class="form-group" *ngIf = "recalculate">
+      <label for="exampleInputEmail17" >Non AC Sleeper</label>
+      <input type="number" class="form-control" id="exampleInputEmail17" [(ngModel)]="nacsleeper" aria-describedby="emailHelp" placeholder="Enter Non Ac Sleeper Price">
+    </div>
+    <div class="form-group" *ngIf = "recalculate">
+      <label for="exampleInputEmail15" >Non AC Seater</label>
+      <input type="number" class="form-control" id="exampleInputEmail15" [(ngModel)]="nacseater" aria-describedby="emailHelp" placeholder="Enter Non Ac Seater Price">
+    </div>
+    <div class="form-group" *ngIf = "recalculate">
+      <label for="exampleInputEmail18">MULTI SLEEPER</label>
+      <input type="number" class="form-control" id="exampleInputEmail19" [(ngModel)]="multisleeper" aria-describedby="emailHelp" placeholder="Enter MULTI SLEEPER Price">
+    </div>
+    
+  </div>
+</div>
+<div class="form-check">
+  <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="recalculate" (ngModelChange)="change()">
+  <label class="form-check-label" for="exampleCheck1">Do not Recalculate me</label>
+</div>
+</div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="updateroutes()">Edit</button>
+  </div>
+</ng-template>
