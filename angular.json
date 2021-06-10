@@ -25,11 +25,7 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css",
-              "//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css",
-              "https://use.fontawesome.com/releases/v5.8.1/css/all.css",
-              "node_modules/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css",
-              "node_modules/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4"
+              "src/styles.css"
               
 
             ],

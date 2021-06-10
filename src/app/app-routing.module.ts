@@ -3,6 +3,7 @@ import {Routes, RouterModule, ExtraOptions} from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { FareconfigComponent } from './fareconfig/fareconfig.component';
 import { FarelistComponent } from './farelist/farelist.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 import { LoginComponent } from './login/login.component';
 import { LogsComponent } from './logs/logs.component';
@@ -19,36 +20,36 @@ import { SlabsComponent } from './slabs/slabs.component';
 
 const routes: Routes = [
   // {path:'home',component:HomeComponent},
-    {path: '',   redirectTo: '/fareconfig', pathMatch: 'full' },
+  //   {path: '',   redirectTo: '/fareconfig', pathMatch: 'full' },
+  // // {
+  // //   path: 'home',
+  // //   component: NavbarComponent,
+  // //   children: [
+  // //     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  // //   ]
+  // // },
   // {
-  //   path: 'home',
+    
+  //   path: 'fareconfig',
   //   component: NavbarComponent,
   //   children: [
-  //     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  //     { path: '', component: FareconfigComponent, canActivate: [AuthGuard] },
   //   ]
   // },
-  {
-    
-    path: 'fareconfig',
-    component: NavbarComponent,
-    children: [
-      { path: '', component: FareconfigComponent, canActivate: [AuthGuard] },
-    ]
-  },
-  {
-    path: 'slabs',
-    component: NavbarComponent,
-    children: [
-      { path: '', component: SlabsComponent, canActivate: [AuthGuard] },
-    ]
-  },
-  {
-    path: 'logs',
-    component: NavbarComponent,
-    children: [
-      { path: '', component: LogsComponent, canActivate: [AuthGuard] },
-    ]
-  },
+  // {
+  //   path: 'slabs',
+  //   component: NavbarComponent,
+  //   children: [
+  //     { path: '', component: SlabsComponent, canActivate: [AuthGuard] },
+  //   ]
+  // },
+  // {
+  //   path: 'logs',
+  //   component: NavbarComponent,
+  //   children: [
+  //     { path: '', component: LogsComponent, canActivate: [AuthGuard] },
+  //   ]
+  // },
   // {
   //   path: 'fareconfig/config',
   //   component: NavbarComponent,
@@ -70,8 +71,9 @@ const routes: Routes = [
   //     { path: '', component: CitiesComponent, canActivate: [AuthGuard] },
   //   ]
   // },
-  {path:'login',component:LoginComponent},
-  {path:'farelist',component:FarelistComponent},
+  // {path:'login',component:LoginComponent},
+  {path:'',component:HomePageComponent},
+  // {path:'farelist',component:FarelistComponent},
     // // {path: '', component:HomeComponent },
     // {path:'addcity',component:AddcityComponent},
     // {path:'fareconfig',component:FareconfigComponent}
