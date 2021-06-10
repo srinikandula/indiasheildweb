@@ -22,6 +22,7 @@ import { AuthInterceptor } from './authconfig.interceptor';
 import { UniquePipe } from './unique.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogsComponent } from './logs/logs.component';
+import { HomePageComponent } from './home-page/home-page.component';
 // import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { LogsComponent } from './logs/logs.component';
     SlabsComponent,
     UniquePipe,
     LogsComponent,
+    HomePageComponent,
   
   ],
   imports: [
