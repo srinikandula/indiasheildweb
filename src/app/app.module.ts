@@ -23,6 +23,7 @@ import { UniquePipe } from './unique.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogsComponent } from './logs/logs.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { NavbarMainComponent } from './navbar-main/navbar-main.component';
 // import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     UniquePipe,
     LogsComponent,
     HomePageComponent,
+    NavbarMainComponent,
   
   ],
   imports: [
