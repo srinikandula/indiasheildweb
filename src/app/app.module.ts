@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarMainComponent } from './navbar-main/navbar-main.component';
 import { SignupComponent } from './signup/signup.component';
+import { FormComponent } from './form/form.component';
 // import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { SignupComponent } from './signup/signup.component';
     HomePageComponent,
     NavbarMainComponent,
     SignupComponent,
+    FormComponent,
   
   ],
   imports: [

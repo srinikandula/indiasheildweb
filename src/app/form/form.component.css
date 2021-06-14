@@ -1,0 +1,90 @@
+body {
+	background: linear-gradient(-45deg,rgb(75, 75, 75) ,#efebe6, #fff);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+
+.s01 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    font-family: 'Poppins', sans-serif;
+    /* background-color: #d6d6d6; */
+    
+    /* background-image: url("src/assets/bg.png");
+    background-size: cover;
+    background-position: center center; */
+    padding: 15px;
+}
+
+.form-inner {
+    /* background: rgb(226, 226, 226); */
+    padding: 20px 20px;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+    background-color: rgba(255, 255, 255, .15);  
+    backdrop-filter: blur(10px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    border-radius: px;
+}
+
+.form-check{
+    width: 70vh;
+}
+
+.btn-search{
+    height: 100%;
+    background: #99c61b;
+    white-space: nowrap;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff;
+    transition: all .2s ease-out, color .2s ease-out;
+    border: 0;
+    cursor: pointer;
+}
+
+
+.s01 form .third-wrap {
+    width: 180px;
+    margin-right: 0;
+  }
+  
+  .s01 form .input-field.third-wrap .btn-search {
+    height: 100%;
+    width: 100%;
+    background: #99c61b;
+    white-space: nowrap;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff;
+    transition: all .2s ease-out, color .2s ease-out;
+    border: 0;
+    cursor: pointer;
+  }
+  
+  .s01 form .input-field.third-wrap .btn-search:hover {
+    background: #6b8d0f;
+  }
