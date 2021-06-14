@@ -3,7 +3,7 @@
       <div class="mx-auto app-login-box col-md-8">
         <!-- <div class="app-logo-inverse mx-auto mb-3"></div> -->
         <!-- <img src="assets/images/whizzard.png" width="175px" height="46px" class="mx-auto d-block"> -->
-        <h3 class="text-center">Bus Portal</h3>
+        <h3 class="text-center">IndiaShield</h3>
         <div class="modal-dialog w-100 mx-auto">
           <div class="modal-content">
             <div class="modal-body">
@@ -14,31 +14,33 @@
                   <span>Please sign in to your account below.</span></h4>
               </div>
               <div class="form-group">
-                <input type="tel" class="form-control" minlength=10 maxlength=10  placeholder="Mobile Number" formControlName="phoneNumber"  [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }"  >
+                <input type="tel" id="number" class="form-control" minlength=10 maxlength=10  placeholder="Mobile Number" formControlName="phoneNumber"  [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" >
                 <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
                   <!-- <div *ngIf="f.number.errors.required">Number is required</div> -->
                   <!-- <div *ngIf="f.number.errors.pattern">Number must be a valid Number</div>
                   <div *ngIf="f.number.errors.minlength">Number must be 10 digits</div> -->
               </div>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <input type="password" class="form-control" minlength=6    placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                   <!-- <div *ngIf="f.password.errors.required">Password is required</div> -->
-                  <!-- <div *ngIf="f.password.errors.minlength">Please Enter at least 6 characters</div> -->
+                  <!-- <div *ngIf="f.password.errors.minlength">Please Enter at least 6 characters</div> --
               </div>
               </div>
               <div class="form-group ml-2  text-muted">
                 <div class="row">
-                <!-- <div class="col"><mat-checkbox>Remember Me</mat-checkbox></div> -->
+                <!-- <div class="col"><mat-checkbox>Remember Me</mat-checkbox></div> --
                 <div class="col"><a class="text-right">Forgot Password/ Username</a></div>
               </div>
-              </div>
+              </div> -->
               
               <div  class="text-center d-none mt-4 mb-2" id="error" style="font-size: 16px; color: red;"></div>
-              <button  class="btn text-center text-white form-control" style="background-color: black;">Login</button>
+              <button id="sendotp" class="btn text-center text-white form-control" style="background-color: black;">Send Otp</button>
             </form>
             </div>
+            <input type="tel" id="otp"  class="d-none form-control" placeholder="Enter OTP" [(ngModel)]="otp" style="width: 93%; margin: 1rem;" >
+            <button id="submit"  class="btn text-center text-white form-control d-none" style="background-color: black;" (click)="verifyOTP()">Submit</button>
               <!-- <div class="divider"></div> -->
               <!-- <h6 class="mb-0">
                 No account?

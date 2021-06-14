@@ -1,19 +1,37 @@
-
-
 <div class="s01">
   <form>
     <div class="inner-form">
       <div class="input-field first-wrap">
-        <input id="search" type="text" placeholder="What are you looking for?" />
+        <input id="search" type="text" placeholder="What are you looking for?" [(ngModel)]="resource" [ngModelOptions]="{standalone: true}"/>
       </div>
-      <div class="input-field second-wrap">
-        <input id="location" type="text" placeholder="location" />
+      <div class="input-field second-wrap"> 
+        <input id="location" type="text" placeholder="location" [(ngModel)]="city" [ngModelOptions]="{standalone: true}"/>
       </div>
       <div class="input-field third-wrap">
-        <button class="btn-search" type="button">Search</button>
+        <button class="btn-search" type="button" (click)="search()">Search</button>
       </div>
     </div>
+    <div *ngIf="error" class="text-danger mt-5 bg-white"><h1>{{error}}</h1></div>
   </form>
 </div>
-
-
+<div class="container-fluid my-5 mx-2" *ngIf="leads">
+    <h3 class="text-center mb-5">Total Counts: {{size}}</h3>
+    <div class="row">
+        <div class="col-md-4 mb-5" *ngFor="let lead of leads">
+            <div class="card">
+                <div class="card-body">
+                  <div class="float-right"><button class="btn btn-info"><i class="fa fa-phone fa-2x"></i></button></div>
+                  <h5 class="card-title mb-4">Name : {{lead.name}}</h5>
+                  <h6 class="card-subtitle mb-3">Contact Number: +91 {{lead.contactnumber}}</h6>
+                  <h6 class="card-subtitle mb-3">Resource: {{lead.resource}}</h6>
+                  <h6 class="card-subtitle mb-3" *ngIf="lead.resourceName">Resource Name: {{lead.resourceName}}</h6>
+                  <h6 class="card-subtitle mb-3" *ngIf="lead.Address">Address: {{lead.Address}}</h6>
+                  <h6 class="card-subtitle mb-3">City: {{lead.city}}</h6>
+                  <h6 class="card-subtitle mb-3">State: {{lead.state}}</h6>
+                  <p class="card-text mb-3"><i class="fa fa-refresh text-success mr-2"></i> Last Updated On - {{lead.UpdatedOn | date}}</p>
+                  <p class="card-text"><span class="mr-2">Verification Status</span><i *ngIf="lead.verificationStatus === 'Verified'" class="fa fa-check text-success"></i><i *ngIf="lead.verificationStatus === 'Unverified'" class="fa fa-times text-danger"></i></p>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

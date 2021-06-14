@@ -10,35 +10,27 @@ import { OrderModule } from 'ngx-order-pipe';
 import { CustomPipe } from './custom.pipe';
 
 import { AppComponent } from './app.component';
-import { FareconfigComponent } from './fareconfig/fareconfig.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarModule } from 'ng-sidebar';
 import { NgSearchFilterModule } from 'ng-search-filter';
 import { LoginComponent } from './login/login.component';
-import { FarelistComponent } from './farelist/farelist.component';
-import { SlabsComponent } from './slabs/slabs.component';
 import { AuthInterceptor } from './authconfig.interceptor';
 import { UniquePipe } from './unique.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LogsComponent } from './logs/logs.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarMainComponent } from './navbar-main/navbar-main.component';
+import { SignupComponent } from './signup/signup.component';
 // import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FareconfigComponent,
     CustomPipe,
-    NavbarComponent,
     LoginComponent,
-    FarelistComponent,
-    SlabsComponent,
     UniquePipe,
-    LogsComponent,
     HomePageComponent,
     NavbarMainComponent,
+    SignupComponent,
   
   ],
   imports: [

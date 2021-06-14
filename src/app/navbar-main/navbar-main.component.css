@@ -451,6 +451,9 @@ body.dark .navbar-light .navbar-toggler-icon:before{
 body.dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
+.navbar-brand img{
+	filter: none;
+}
 
 
 

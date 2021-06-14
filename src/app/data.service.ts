@@ -18,10 +18,6 @@ export class DataService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      // "Access-Control-Allow-Origin":"*",
-      // "Access-Control-Allow-Methods":"POST, GET, OPTIONS, DELETE, PUT",
-      // "Access-Control-Max-Age":"1000",
-      // "Access-Control-Allow-Headers":"x-requested-with, Content-Type, origin, authorization, accept, client-security-token"
     })
   };
 
@@ -43,108 +39,103 @@ export class DataService {
     this.router.navigate(['/']);
   }
 
-  getconfig(query){
-    console.log(query);
+  getresource(query){
     if(JSON.stringify(query) != '{}'){
-    return this.http.get<[]>(this.basePath + 'fareconfig' + '?recalculate=' + query.recalculate,{
-      headers:{['Content-Type']: 'application/json'},
-    });
+      if(query.city && !query.resource){
+        return this.http.get<[]>(this.basePath + 'resources' + '?city=' + query.city,{
+          headers:{['Content-Type']: 'application/json'},
+        });
+      }else if(!query.city && query.resource){
+        if(query.resource === 'Remdesivir'){
+          return this.http.get<[]>(this.basePath + 'resources' + '?resourceName=' + query.resource,{
+            headers:{['Content-Type']: 'application/json'},
+          });
+        }else{
+          return this.http.get<[]>(this.basePath + 'resources' + '?resource=' + query.resource,{
+            headers:{['Content-Type']: 'application/json'},
+          });
+        }
+      }else{
+        if(query.resource === 'Remdesivir'){
+          return this.http.get<[]>(this.basePath + 'resources' + '?city=' + query.city + '&resourceName=' + query.resource,{
+            headers:{['Content-Type']: 'application/json'},
+          });
+        }else{
+          return this.http.get<[]>(this.basePath + 'resources' + '?city=' + query.city + '&resource=' + query.resource,{
+            headers:{['Content-Type']: 'application/json'},
+          });
+        }
+      }
   }
-  else{
-    return this.http.get<[]>(this.basePath + 'fareconfig',{
-      headers:{['Content-Type']: 'application/json'},
-    });
-  }
-  }
-
-  refreshdata(){
-    return this.http.get<[]>(this.basePath + 'refreshdata' + '?username=' + localStorage.getItem('username'),{
-      headers:{['Content-Type']: 'application/json'},
-    });
-  }
-
-  getslabs(){
-    return this.http.get<[]>(this.basePath + 'getslabs',{
-      headers:{['Content-Type']: 'application/json'},
-    });
-  }
-
-  getlogs(){
-    return this.http.get<[]>(this.basePath + 'getlogs',{
-      headers:{['Content-Type']: 'application/json'},
-    });
-  }
-
-  addconfig(source,destination,distance,slab){
-    return this.http.post<[]>(this.basePath + 'fareconfig',[{"sourcecity":source,"destinationcity":destination,"distance":distance,"slab":slab,"username":localStorage.getItem('username')}],this.httpOptions);
   }
 
-  updateconfig(id,slab, nacseater, nacsleeper, acseater, acsleeper, multiseater,multisleeper,distance,recalculate){
-      return this.http.put<[]>(this.basePath + 'fareconfig/' + id, {"slab":slab,"distance":distance,"NON_AC_SEATER":nacseater, "AC_SEATER": acseater, "NON_AC_SLEEPER":nacsleeper, "AC_SLEEPER": acsleeper,"MULTI_SEATER": multiseater, "MULTI_SLEEPER": multisleeper,"recalculate":recalculate,"username":localStorage.getItem('username')},this.httpOptions);
-    }
-
-  addslabs(type,priceperkm,slab){
-    return this.http.post<[]>(this.basePath + 'rateconfig',{"type":type,"pricePerKM":priceperkm,"slab":slab,"username":localStorage.getItem('username')},this.httpOptions);
-  }
-
-  editslabs(id,price){
-    return this.http.put<[]>(this.basePath + 'rateconfig/' + id, {"pricePerKM":price,"username":localStorage.getItem('username')},this.httpOptions);
-  }
-
-
-
-  getconfig2(){
-    let queryString = window.location.search;
-    // console.log(window.location.search);
-    const urlParams = new URLSearchParams(queryString);
-    const product = urlParams.get('sourcecity')
-    // console.log(product); 
-    // console.log(href.split(href,10));
-    return this.http.get<[]>(this.basePath + 'farelist',{
-      headers:{['Content-Type']: 'application/json'},
-    });
-  }
-
-  getrateconfig(){
-    return this.http.get<[]>(this.basePath + 'rateconfig',{
-      headers:{['Content-Type']: 'application/json'},
-    });
-  }
-
-  getuser(mobile, password){
-    return this.http.post<[]>(this.basePath + 'getuser', {"phonenumber":mobile,"password":password},this.httpOptions);
-  }
-
-  // addcity(city, state, redbus, abhibus, bitla, its, ezinfo, mantis){
-  //   return this.http.post<[]>(this.basePath + 'city', {"token":localStorage.getItem('token'),"cityname":city,"statename":state,"redbusid":redbus, "abhibusid": abhibus, "bitlaid":bitla, "its": its, "ezinfo": ezinfo, "mantis": mantis,"created_by":localStorage.getItem('id')},this.httpOptions);
+  // refreshdata(){
+  //   return this.http.get<[]>(this.basePath + 'refreshdata' + '?username=' + localStorage.getItem('username'),{
+  //     headers:{['Content-Type']: 'application/json'},
+  //   });
   // }
 
-  // updatecity(id,city, state, redbus, abhibus, bitla, its, ezinfo, mantis){
-  //   return this.http.put<[]>(this.basePath + 'city/' + id, {"token":localStorage.getItem('token'),"cityname":city,"statename":state,"redbusid":redbus, "abhibusid": abhibus, "bitlaid":bitla, "its": its, "ezinfo": ezinfo, "mantis": mantis,"updated_by":localStorage.getItem('id')},this.httpOptions);
+  // getslabs(){
+  //   return this.http.get<[]>(this.basePath + 'getslabs',{
+  //     headers:{['Content-Type']: 'application/json'},
+  //   });
   // }
 
-  // fareconfig(scity, dcity, routename, distance){
-  //   return this.http.post<[]>(this.basePath + 'fareconfig', {"token":localStorage.getItem('token'),"sourcecity":scity,"destinationcity":dcity, "routename.routes":routename, "distance":distance, "created_by":localStorage.getItem('id')},this.httpOptions);
+  // getlogs(){
+  //   return this.http.get<[]>(this.basePath + 'getlogs',{
+  //     headers:{['Content-Type']: 'application/json'},
+  //   });
   // }
-  // addtype(id,rate){
-  //   if(localStorage.getItem('bustype') == 'Non AC Seater'){
-  //     return this.http.put<[]>(this.basePath + 'fareconfig/' + id, {"token":localStorage.getItem('token'),"nseater":rate,"updated_by":localStorage.getItem('id')},this.httpOptions);
-  //   }
-  //   if(localStorage.getItem('bustype') == 'AC Seater'){
-  //     return this.http.put<[]>(this.basePath + 'fareconfig/' + id, {"token":localStorage.getItem('token'),"aseater":rate,"updated_by":localStorage.getItem('id')},this.httpOptions);
-  //   }
-  //   if(localStorage.getItem('bustype') == 'Non AC Sleeper Lower'){
-  //     return this.http.put<[]>(this.basePath + 'fareconfig/' + id, {"token":localStorage.getItem('token'),"nsleeperl":rate,"updated_by":localStorage.getItem('id')},this.httpOptions);
-  //   }
-  //   if(localStorage.getItem('bustype') == 'Non AC Sleeper Upper'){
-  //     return this.http.put<[]>(this.basePath + 'fareconfig/' + id, {"token":localStorage.getItem('token'),"nsleeperu":rate,"updated_by":localStorage.getItem('id')},this.httpOptions);
-  //   }
-  //   if(localStorage.getItem('bustype') == 'AC Sleeper Lower'){
-  //     return this.http.put<[]>(this.basePath + 'fareconfig/' + id, {"token":localStorage.getItem('token'),"asleeperl":rate,"updated_by":localStorage.getItem('id')},this.httpOptions);
-  //   }
-  //   if(localStorage.getItem('bustype') == 'AC Sleeper upper'){
-  //     return this.http.put<[]>(this.basePath + 'fareconfig/' + id, {"token":localStorage.getItem('token'),"asleeperu":rate,"updated_by":localStorage.getItem('id')},this.httpOptions);
-  //   }
-   
+
+  // addconfig(source,destination,distance,slab){
+  //   return this.http.post<[]>(this.basePath + 'fareconfig',[{"sourcecity":source,"destinationcity":destination,"distance":distance,"slab":slab,"username":localStorage.getItem('username')}],this.httpOptions);
   // }
+
+  // updateconfig(id,slab, nacseater, nacsleeper, acseater, acsleeper, multiseater,multisleeper,distance,recalculate){
+  //     return this.http.put<[]>(this.basePath + 'fareconfig/' + id, {"slab":slab,"distance":distance,"NON_AC_SEATER":nacseater, "AC_SEATER": acseater, "NON_AC_SLEEPER":nacsleeper, "AC_SLEEPER": acsleeper,"MULTI_SEATER": multiseater, "MULTI_SLEEPER": multisleeper,"recalculate":recalculate,"username":localStorage.getItem('username')},this.httpOptions);
+  //   }
+
+  // addslabs(type,priceperkm,slab){
+  //   return this.http.post<[]>(this.basePath + 'rateconfig',{"type":type,"pricePerKM":priceperkm,"slab":slab,"username":localStorage.getItem('username')},this.httpOptions);
+  // }
+
+  // editslabs(id,price){
+  //   return this.http.put<[]>(this.basePath + 'rateconfig/' + id, {"pricePerKM":price,"username":localStorage.getItem('username')},this.httpOptions);
+  // }
+
+
+
+  // getconfig2(){
+  //   let queryString = window.location.search;
+  //   // console.log(window.location.search);
+  //   const urlParams = new URLSearchParams(queryString);
+  //   const product = urlParams.get('sourcecity')
+  //   // console.log(product); 
+  //   // console.log(href.split(href,10));
+  //   return this.http.get<[]>(this.basePath + 'farelist',{
+  //     headers:{['Content-Type']: 'application/json'},
+  //   });
+  // }
+
+  // getrateconfig(){
+  //   return this.http.get<[]>(this.basePath + 'rateconfig',{
+  //     headers:{['Content-Type']: 'application/json'},
+  //   });
+  // }
+
+  // getuser(mobile, password){
+  //   return this.http.post<[]>(this.basePath + 'getuser', {"phonenumber":mobile,"password":password},this.httpOptions);
+  // }
+
+  sendotp(mobile){
+    return this.http.post<[]>(this.basePath + 'sendotp', {"phonenumber":mobile},this.httpOptions);
+  }
+
+  verify(mobile,otp){
+    return this.http.post<[]>(this.basePath + "verifyotp", {"phonenumber":mobile, "otp": otp},this.httpOptions);
+  }
+
+  signup(signup,role,mobile){
+    return this.http.put<[]>(this.basePath + "user", {"formdata":signup, "role": role, "phonenumber": mobile},this.httpOptions);
+  }
 }

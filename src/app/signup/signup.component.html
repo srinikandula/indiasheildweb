@@ -1,0 +1,200 @@
+<div class=" bg-animation">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="mx-auto app-login-box col-md-8">
+        <img class="d-block mx-auto mt-5" style="width:25%" src="../assets/indiashield3.png" alt="">
+        <div class="text-center mt-3" *ngIf="form == 1">
+            <h3 class="mb-3">INDIASHIELD Community Vaccination Drive : Active</h3>
+            <p class="mb-3 mx-auto" style="max-width: 32rem; font-size: 1.1rem;">Our aim is to find you a public or private vaccination slot available closest to you in 48 hours. Follow the next steps to sign up.</p>
+            <p class="mb-3 mx-auto" style="max-width: 32rem; font-size: 1.1rem;">1. Submitting the form is mandatory to register to get alerts for the next vaccination camp near you</p>
+            <p class="mb-3 mx-auto" style="max-width: 32rem; font-size: 1.1rem;">2. IMPORTANT: Once you submit the form below, please join our Telegram Group for further notifications:  <a href="http://bit.ly/insvaccine" target="_blank">http://bit.ly/insvaccine</a></p>
+        </div>
+        <div class="text-center mt-3" *ngIf="form == 2">
+            <h3 class="mb-3">EDGE Covid Action Soldiers</h3>
+            <p class="mb-3 mx-auto" style="max-width: 32rem; font-size: 1.1rem;">If you identify yourself as a helper and can provide your time and services to help the ones in distress seeking help for themselves and loved ones, please join the EDGE Covid Action army!</p>
+            <p class="mb-3 mx-auto" style="max-width: 32rem; font-size: 1.1rem;">LOCAL LEADERS, VOLUNTEERS, AND HELP GIVER - SIGN UP for the EDGE COVID ACTION GROUP.</p>
+            <p class="mb-3 mx-auto" style="max-width: 32rem; font-size: 1.1rem;"></p>
+        </div>
+        <div class="modal-dialog w-100 mx-auto">
+          <div class="modal-content">
+            <div class="modal-body">
+            <div class="h5 modal-title text-center">
+                    <h4 class="mt-2">
+                      <div>Welcome</div>
+                      <span>Please Sign Up</span></h4>
+            </div><br>
+            <input type="tel"class="form-control" [(ngModel)]="username"  disabled><br>
+            <select class="custom-select" aria-label="Default select example" [(ngModel)]="form">
+                <option value = '' selected>Please Select User Type</option>
+                <option value="1">Vaccination</option>
+                <option value="2">Volunteer</option>
+                <option value="3">Help Seeker</option>
+                <option value="4">Supplier</option>
+              </select>
+
+
+              <form [formGroup]="signup1" (ngSubmit)="onSubmit()" id="form1" *ngIf="form == 1" class="mt-5">
+              <div class="form-group">
+                    <label class="input-group-text" for="inputGroupSelect01">1.You are applying as  <span class="text-danger">*</span></label>
+                    <p class="mt-3">Signing up as an Individual or Group/Family/Organisation?</p>
+                <select class="custom-select" id="inputGroupSelect01" formControlName="signuptype" [ngClass]="{ 'is-invalid': submitted && f.signuptype.errors }">
+                    <option value="" selected>Choose...</option>
+                    <option value="Individual">Individual</option>
+                    <option value="Group">Group</option>
+                </select>
+                <div *ngIf="submitted && f.signuptype.errors" class="invalid-feedback">
+                    <div *ngIf="f.signuptype.errors.required">Apply As is required</div>
+                </div>
+              </div>
+
+              <div class="form-group" *ngIf="signup1.value.signuptype === 'Individual'">
+                <label class="input-group-text" for="inputGroupSelect02">2.Type of Individual<span class="text-danger">*</span></label>
+                <p class="mt-3">In case of Student, Senior Citizen and Patient, please carry proof</p>
+                <select class="custom-select" id="inputGroupSelect02" formControlName="typeofindividual" [ngClass]="{ 'is-invalid': submitted && f.typeofindividual.errors }">
+                    <option value="" selected>Choose...</option>
+                    <option value="Regular">Regular</option>
+                    <option value="SeniorCitizen">Senior Citizen</option>
+                    <option value="PatientWithComorbidities">Patient with comorbidities</option>
+                    <option value="StudentFlyingAbroadForEducation">Student flying abroad for education</option>
+                </select>
+                <div *ngIf="submitted && f.typeofindividual.errors" class="invalid-feedback">
+                    <div *ngIf="f.typeofindividual.errors.required">Type of Individual is required</div>
+                </div>
+             </div>
+
+             <div class="form-group" *ngIf="signup1.value.signuptype === 'Individual'">
+                <label class="input-group-text" for="inputGroupSelect03">3.Vaccination Status<span class="text-danger">*</span></label>
+                <p  class="mt-3"></p>
+                <select class="custom-select" id="inputGroupSelect03" formControlName="vaccination" [ngClass]="{ 'is-invalid': submitted && f.vaccination.errors }">
+                    <option value="" selected>Choose...</option>
+                    <option value="FirstDose">First Dose</option>
+                    <option value="SecondDose">Second Dose</option>
+                </select>
+                <div *ngIf="submitted && f.vaccination.errors" class="invalid-feedback">
+                    <div *ngIf="f.vaccination.errors.required">Vaccination Status is required</div>
+                </div>
+             </div>
+
+             <div class="form-group" *ngIf="signup1.value.signuptype === 'Individual'">
+                <label class="input-group-text" for="inputGroupSelect04">4.Aadhar Number<span class="text-danger">*</span></label>
+                <p  class="mt-3">This will help the facilitator register you for the vaccine drive. Help them allot slots faster.</p>
+                <input type="tel"class="form-control" id="inputGroupSelect04" placeholder="Enter Aadhar Number" formControlName="aadharnumber" [ngClass]="{ 'is-invalid': submitted && f.aadharnumber.errors }">
+                <div *ngIf="submitted && f.aadharnumber.errors" class="invalid-feedback">
+                    <div *ngIf="f.aadharnumber.errors.required">Aadhar Number is required</div>
+                </div>
+             </div>
+
+             <div class="form-group" *ngIf="signup1.value.signuptype === 'Individual'">
+                <label class="input-group-text" for="inputGroupSelect05">5.CoWIN Registration Number<span class="text-danger">*</span></label>
+                <p  class="mt-3">This will help the facilitator register you for the vaccine drive. Help them allot slots faster.</p>
+                <input type="tel"class="form-control" id="inputGroupSelect05" placeholder="Enter CoWin Number" formControlName="cowinnumber" [ngClass]="{ 'is-invalid': submitted && f.cowinnumber.errors }">
+                <div *ngIf="submitted && f.cowinnumber.errors" class="invalid-feedback">
+                    <div *ngIf="f.cowinnumber.errors.required">CoWIN Registration Number is required</div>
+                </div>
+             </div>
+
+             <div class="form-group" *ngIf="signup1.value.signuptype === 'Group'">
+                <label class="input-group-text" for="inputGroupSelect06">2.Total number of members to be vaccinated<span class="text-danger">*</span></label>
+                <p  class="mt-3">Only those aged 18 years and older shall be eligible</p>
+                <input type="tel"class="form-control" id="inputGroupSelect06" placeholder="Enter Number Of Members" formControlName="members" [ngClass]="{ 'is-invalid': submitted && f.members.errors }">
+                <div *ngIf="submitted && f.members.errors" class="invalid-feedback">
+                    <div *ngIf="f.members.errors.required">Total number of members is required</div>
+                </div>
+             </div>
+
+
+              <div  class="text-center d-none mt-4 mb-2" id="error" style="font-size: 16px; color: red;"></div>
+              <button id="sendotp" class="btn text-center text-white form-control btn-primary" >Register Your Interest</button>
+            </form>
+
+            <form [formGroup]="signup2" (ngSubmit)="onSubmit2()"  *ngIf="form == 2" class="mt-5">
+
+                <div class="form-group">
+                    <label class="input-group-text" for="inputGroupSelect01">1.Full Name<span class="text-danger">*</span></label>
+                    <p  class="mt-3"></p>
+                    <input type="text"class="form-control" id="inputGroupSelect01" placeholder="Enter Full Name" formControlName="fullname" [ngClass]="{ 'is-invalid': submitted2 && f1.fullname.errors }">
+                    <div *ngIf="submitted2 && f1.fullname.errors" class="invalid-feedback">
+                        <div *ngIf="f1.fullname.errors.required">Full Name is required</div>
+                    </div>
+                 </div>
+
+                 <div class="form-group">
+                    <label class="input-group-text" for="inputGroupSelect02">2.Phone Number<span class="text-danger">*</span></label>
+                    <p  class="mt-3"></p>
+                    <input type="tel"class="form-control" id="inputGroupSelect02" placeholder="Enter Phone Number" formControlName="phonenumber" [ngClass]="{ 'is-invalid': submitted2 && f1.phonenumber.errors }">
+                    <div *ngIf="submitted2 && f1.phonenumber.errors" class="invalid-feedback">
+                        <div *ngIf="f1.phonenumber.errors.required">Phone Number is required</div>
+                    </div>
+                 </div>
+
+                 <div class="form-group">
+                    <label class="input-group-text" for="inputGroupSelect03">3.Email ID <span class="text-danger">*</span></label>
+                    <p  class="mt-3"></p>
+                    <input type="email"class="form-control" id="inputGroupSelect03" placeholder="Enter Email Id" formControlName="email" [ngClass]="{ 'is-invalid': submitted2 && f1.email.errors }">
+                    <div *ngIf="submitted2 && f1.email.errors" class="invalid-feedback">
+                        <div *ngIf="f1.email.errors.required">Email ID is required</div>
+                    </div>
+                 </div>
+
+                 <div class="form-group">
+                    <label class="input-group-text" for="inputGroupSelect04">4.State <span class="text-danger">*</span></label>
+                    <p  class="mt-3"></p>
+                    <input type="text"class="form-control" id="inputGroupSelect04" placeholder="Enter State" formControlName="state" [ngClass]="{ 'is-invalid': submitted2 && f1.state.errors }">
+                    <div *ngIf="submitted2 && f1.state.errors" class="invalid-feedback">
+                        <div *ngIf="f1.state.errors.required">State  is required</div>
+                    </div>
+                 </div>
+
+                 <div class="form-group">
+                    <label class="input-group-text" for="inputGroupSelect05">5.City<span class="text-danger">*</span></label>
+                    <p  class="mt-3"></p>
+                    <input type="text"class="form-control" id="inputGroupSelect05" placeholder="Enter City" formControlName="city" [ngClass]="{ 'is-invalid': submitted2 && f1.city.errors }">
+                    <div *ngIf="submitted2 && f1.city.errors" class="invalid-feedback">
+                        <div *ngIf="f1.city.errors.required">City is required</div>
+                    </div>
+                 </div>
+
+                 <div class="form-group">
+                    <label class="input-group-text" for="inputGroupSelect06">6.Pincode <span class="text-danger">*</span></label>
+                    <p  class="mt-3"></p>
+                    <input type="tel"class="form-control" id="inputGroupSelect06" placeholder="Enter Pincode" formControlName="pincode" [ngClass]="{ 'is-invalid': submitted2 && f1.pincode.errors }">
+                    <div *ngIf="submitted2 && f1.pincode.errors" class="invalid-feedback">
+                        <div *ngIf="f1.pincode.errors.required">Pincode is required</div>
+                    </div>
+                 </div>
+
+                 <div class="form-group">
+                    <label class="input-group-text" for="inputGroupSelect07">7.What can you do for IndiaShield ?<span class="text-danger">*</span></label>
+                    <p  class="mt-3"></p>
+                    <textarea type="text"class="form-control" id="inputGroupSelect07" placeholder="What can you do for IndiaShield ?" formControlName="description" [ngClass]="{ 'is-invalid': submitted2 && f1.description.errors }"></textarea>
+                    <div *ngIf="submitted2 && f1.description.errors" class="invalid-feedback">
+                        <div *ngIf="f1.description.errors.required">What can you do for IndiaShield is required</div>
+                    </div>
+                 </div>
+
+                <div  class="text-center d-none mt-4 mb-2" id="error" style="font-size: 16px; color: red;"></div>
+                <button id="sendotp" class="btn text-center text-white form-control btn-primary">Submit</button>
+            </form>
+
+            <form [formGroup]="signup3" (ngSubmit)="onSubmit3()" id="form1" *ngIf="form == 3" class="mt-5">
+                <div class="form-group">
+                    Help Seeker
+                </div>
+                <div  class="text-center d-none mt-4 mb-2" id="error" style="font-size: 16px; color: red;"></div>
+                <button id="sendotp" class="btn text-center text-white form-control" style="background-color: black;">Send Otp</button>
+            </form>
+
+            <form [formGroup]="signup4" (ngSubmit)="onSubmit4()" id="form1" *ngIf="form == 4" class="mt-5">
+                <div class="form-group">
+                    Supplier
+                </div>
+                <div  class="text-center d-none mt-4 mb-2" id="error" style="font-size: 16px; color: red;"></div>
+                <button id="sendotp" class="btn text-center text-white form-control" style="background-color: black;">Send Otp</button>
+            </form>
+
+
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  

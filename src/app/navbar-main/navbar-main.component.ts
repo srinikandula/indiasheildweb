@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-navbar-main',
@@ -7,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarMainComponent implements OnInit {
 
-
-  constructor() { }
+  token = localStorage.getItem('token');
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    this.dataService.logout();
+    this.token = localStorage.getItem('token');
   }
 
 }

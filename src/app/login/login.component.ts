@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit {
   loginform: FormGroup;
   submitted = false;
   formvalue;
+  otp;
 
   ngOnInit(): void {
     this.loginform = this.formBuilder.group({
       phoneNumber: ['', [Validators.required, Validators.minLength(10),Validators.pattern('^[6789]+[0-9]{9}$')]],
-      password: ['', [Validators.required]],
   }); 
   // if(localStorage.getItem('access_token')!= null){
   //   this.router.navigate(['/orders']);
@@ -36,16 +36,20 @@ export class LoginComponent implements OnInit {
         return;
     }
     else{
-      this.dataService.getuser(this.loginform.value.phoneNumber, this.loginform.value.password).subscribe((data:any)=>{
+      this.dataService.sendotp(this.loginform.value.phoneNumber).subscribe((data:any)=>{
         if(data.success == true){
-          Swal.fire('Success!',data.message, 'success');
-          localStorage.setItem('token',data.token);
-          localStorage.setItem('username',this.loginform.value.phoneNumber);
-          setTimeout(()=>{
-            localStorage.removeItem('token');
-          },3.6e+6);
-          localStorage.setItem('id',data.userId);
-          this.router.navigate(['/fareconfig']);
+          document.getElementById("number").disabled =true;
+          document.getElementById("sendotp").classList.add("d-none");
+          document.getElementById("otp").classList.remove("d-none");
+          document.getElementById("submit").classList.remove("d-none");
+          // Swal.fire('Success!',data.message, 'success');
+          // localStorage.setItem('token',data.token);
+          // localStorage.setItem('username',this.loginform.value.phoneNumber);
+          // setTimeout(()=>{
+          //   localStorage.removeItem('token');
+          // },3.6e+6);
+          // localStorage.setItem('id',data.userId);
+          // this.router.navigate(['/fareconfig']);
         }
         },
         error =>{ 
@@ -74,6 +78,32 @@ export class LoginComponent implements OnInit {
     //   document.getElementById("error").innerHTML= error.error.message;
     // });
     // console.log(this.loginform.value)
+  }
+
+  verifyOTP(){
+    this.dataService.verify(this.loginform.value.phoneNumber,this.otp).subscribe((data:any)=>{
+      if(data.success == true && data.signup === true){
+        localStorage.setItem('token',data.token);
+        localStorage.setItem('username',data.number);
+        localStorage.setItem('signup',data.signup);
+        // setTimeout(()=>{
+        //   localStorage.removeItem('token');
+        // },3.6e+6);
+        // localStorage.setItem('id',data.userId);
+        this.router.navigate(['/']);
+      }else if(data.success == true && data.signup === false){
+        localStorage.setItem('token',data.token);
+        localStorage.setItem('username',data.number);
+        localStorage.setItem('signup',data.signup);
+        this.router.navigate(['/signup']);
+      }
+      },
+      error =>{ 
+        console.log(error);
+        if(error.error.success == false){
+          Swal.fire('Fail!',error.error.message, 'error');
+        }
+      });
   }
 
 }

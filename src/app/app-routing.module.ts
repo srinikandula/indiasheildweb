@@ -1,14 +1,11 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule, ExtraOptions} from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { FareconfigComponent } from './fareconfig/fareconfig.component';
-import { FarelistComponent } from './farelist/farelist.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
 import { LoginComponent } from './login/login.component';
-import { LogsComponent } from './logs/logs.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { SlabsComponent } from './slabs/slabs.component';
+import { NavbarMainComponent } from './navbar-main/navbar-main.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 // const routerOptions: ExtraOptions = {
@@ -71,8 +68,11 @@ const routes: Routes = [
   //     { path: '', component: CitiesComponent, canActivate: [AuthGuard] },
   //   ]
   // },
-  // {path:'login',component:LoginComponent},
-  {path:'',component:HomePageComponent},
+  {path:'login',component:LoginComponent},
+  {path:'signup',component:SignupComponent, canActivate: [AuthGuard]},
+  {path:'',component:NavbarMainComponent,children: [
+        { path: '', component: HomePageComponent },
+  ]},
   // {path:'farelist',component:FarelistComponent},
     // // {path: '', component:HomeComponent },
     // {path:'addcity',component:AddcityComponent},
