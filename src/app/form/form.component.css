@@ -88,3 +88,7 @@ body {
   .s01 form .input-field.third-wrap .btn-search:hover {
     background: #6b8d0f;
   }
+
+  #abc{
+      padding-top: 10%;
+  }

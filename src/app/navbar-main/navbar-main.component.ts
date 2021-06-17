@@ -12,6 +12,7 @@ export class NavbarMainComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    // console.log(this.token);
   }
 
   logout(){

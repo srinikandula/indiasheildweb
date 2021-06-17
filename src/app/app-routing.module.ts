@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule, ExtraOptions} from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { FormComponent } from './form/form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
 import { LoginComponent } from './login/login.component';
@@ -69,6 +70,7 @@ const routes: Routes = [
   //   ]
   // },
   {path:'login',component:LoginComponent},
+  {path:'form',component:FormComponent},
   {path:'signup',component:SignupComponent, canActivate: [AuthGuard]},
   {path:'',component:NavbarMainComponent,children: [
         { path: '', component: HomePageComponent },

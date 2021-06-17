@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { DataService } from '../data.service';
 
 @Component({
@@ -13,6 +14,8 @@ export class HomePageComponent implements OnInit {
   leads;
   size;
   error;
+  role = localStorage.getItem('role');
+
 
   constructor(private dataService: DataService) { }
 
@@ -70,6 +73,26 @@ export class HomePageComponent implements OnInit {
     return first + value.substr(1); 
   }
 
+
+  verify(id){
+    Swal.fire({
+      title: 'Are You Sure',
+      showCancelButton: true,
+      confirmButtonText: `Yes`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        let date = new Date();
+        this.dataService.verifyresource(id,localStorage.getItem('name'),date).subscribe((data:any)=>{
+          Swal.fire('Verified!', '', 'success');
+          this.search();
+          },
+          error =>{
+            console.log(error);
+        });
+      }
+    })
+  }
 
 
 }

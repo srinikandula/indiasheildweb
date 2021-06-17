@@ -20,6 +20,7 @@
         <div class="col-md-4 mb-5" *ngFor="let lead of leads">
             <div class="card">
                 <div class="card-body">
+                  <div class="float-right ml-3" *ngIf="role === 'Volunteer' && lead.verificationStatus === 'Unverified'"><button class="btn btn-success" (click)="verify(lead._id)"><i class="fa fa-check fa-2x"></i></button></div>
                   <div class="float-right"><button class="btn btn-info"><i class="fa fa-phone fa-2x"></i></button></div>
                   <h5 class="card-title mb-4">Name : {{lead.name}}</h5>
                   <h6 class="card-subtitle mb-3">Contact Number: +91 {{lead.contactnumber}}</h6>
@@ -28,6 +29,8 @@
                   <h6 class="card-subtitle mb-3" *ngIf="lead.Address">Address: {{lead.Address}}</h6>
                   <h6 class="card-subtitle mb-3">City: {{lead.city}}</h6>
                   <h6 class="card-subtitle mb-3">State: {{lead.state}}</h6>
+                  <h6 class="card-subtitle mb-3" *ngIf="lead.verifiedby">Verified By: {{lead.verifiedby}}</h6>
+                  <h6 class="card-subtitle mb-3" *ngIf="lead.verifiedon">Verified On: {{lead.verifiedon | date}}</h6>
                   <p class="card-text mb-3"><i class="fa fa-refresh text-success mr-2"></i> Last Updated On - {{lead.UpdatedOn | date}}</p>
                   <p class="card-text"><span class="mr-2">Verification Status</span><i *ngIf="lead.verificationStatus === 'Verified'" class="fa fa-check text-success"></i><i *ngIf="lead.verificationStatus === 'Unverified'" class="fa fa-times text-danger"></i></p>
                 </div>

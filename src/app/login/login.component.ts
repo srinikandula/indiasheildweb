@@ -86,6 +86,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token',data.token);
         localStorage.setItem('username',data.number);
         localStorage.setItem('signup',data.signup);
+        localStorage.setItem('name',data.data[0].name);
+        localStorage.setItem('role',data.data[0].role);
         // setTimeout(()=>{
         //   localStorage.removeItem('token');
         // },3.6e+6);
@@ -95,6 +97,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token',data.token);
         localStorage.setItem('username',data.number);
         localStorage.setItem('signup',data.signup);
+        // window.location.reload();
         this.router.navigate(['/signup']);
       }
       },

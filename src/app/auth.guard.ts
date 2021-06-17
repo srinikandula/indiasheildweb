@@ -15,21 +15,27 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-      if(localStorage.getItem('token')!= null)
+      
+      let url = window.location.hash;
+      let signup = localStorage.getItem('signup');
+      if(localStorage.getItem('token')!= null && signup === 'false')
         {
-          let url = window.location.hash;
-          let signup:any = localStorage.getItem('signup');
-          console.log(signup);
-          if(url === '#/signup' &&  signup === 'true'){
-            this.router.navigate(['/']);
-          }else{
-          return true; 
-          }
+          // console.log(typeof signup);
+          // console.log(signup);
+          // console.log(url);
+          // if(url === '#/signup' &&  signup === 'true'){
+          //   this.router.navigate(['/']);
+          // }else{
+            return true; 
+          // }
         }
         else{
         //   if(this.dataService.isLoggedIn == false){
+          if(signup === 'true'){
+            this.router.navigate(['/']);
+          }else{
           this.router.navigate(['/login']);
+          }
           return false;
         // //}
           }

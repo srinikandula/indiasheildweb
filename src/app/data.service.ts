@@ -40,28 +40,34 @@ export class DataService {
   }
 
   getresource(query){
+    let url;
+    if(localStorage.getItem('token')){
+      url = 'resourcesbylogin';
+    }else{
+      url = 'resources';
+    }
     if(JSON.stringify(query) != '{}'){
       if(query.city && !query.resource){
-        return this.http.get<[]>(this.basePath + 'resources' + '?city=' + query.city,{
+        return this.http.get<[]>(this.basePath + url + '?city=' + query.city,{
           headers:{['Content-Type']: 'application/json'},
         });
       }else if(!query.city && query.resource){
         if(query.resource === 'Remdesivir'){
-          return this.http.get<[]>(this.basePath + 'resources' + '?resourceName=' + query.resource,{
+          return this.http.get<[]>(this.basePath + url + '?resourceName=' + query.resource,{
             headers:{['Content-Type']: 'application/json'},
           });
         }else{
-          return this.http.get<[]>(this.basePath + 'resources' + '?resource=' + query.resource,{
+          return this.http.get<[]>(this.basePath + url + '?resource=' + query.resource,{
             headers:{['Content-Type']: 'application/json'},
           });
         }
       }else{
         if(query.resource === 'Remdesivir'){
-          return this.http.get<[]>(this.basePath + 'resources' + '?city=' + query.city + '&resourceName=' + query.resource,{
+          return this.http.get<[]>(this.basePath + url + '?city=' + query.city + '&resourceName=' + query.resource,{
             headers:{['Content-Type']: 'application/json'},
           });
         }else{
-          return this.http.get<[]>(this.basePath + 'resources' + '?city=' + query.city + '&resource=' + query.resource,{
+          return this.http.get<[]>(this.basePath + url + '?city=' + query.city + '&resource=' + query.resource,{
             headers:{['Content-Type']: 'application/json'},
           });
         }
@@ -133,6 +139,10 @@ export class DataService {
 
   verify(mobile,otp){
     return this.http.post<[]>(this.basePath + "verifyotp", {"phonenumber":mobile, "otp": otp},this.httpOptions);
+  }
+
+  verifyresource(id,name,date){
+    return this.http.put<[]>(this.basePath + "resourcesbylogin", {"id":id, "verifyby" : name, "date" : date},this.httpOptions);
   }
 
   signup(signup,role,mobile){
