@@ -13,7 +13,7 @@ export class DataService {
 
   basePath2 = "http://localhost:5000/api/v1/";
   a = window.location.hostname;
-  basePath = this.a == "localhost" ? this.basePath2 : environment.basePath;
+  basePath = "https://indiashieldapi.whizzard.in/";
   // basePath = environment.basePath
   httpOptions = {
     headers: new HttpHeaders({
