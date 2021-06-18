@@ -21,19 +21,6 @@ export class DataService {
     })
   };
 
-  // getstate(){
-  //   return this.http.get<[]>(this.basePath + 'state',{
-  //     headers:{['Content-Type']: 'application/json'},
-  //   });
-  // }
-
-  // getcity(){
-  //   return this.http.get<[]>(this.basePath + 'city',{
-  //     headers:{['Content-Type']: 'application/json'},
-  //   });
-  // }
-
-
   logout() {
     localStorage.clear();
     this.router.navigate(['/']);
@@ -75,64 +62,6 @@ export class DataService {
   }
   }
 
-  // refreshdata(){
-  //   return this.http.get<[]>(this.basePath + 'refreshdata' + '?username=' + localStorage.getItem('username'),{
-  //     headers:{['Content-Type']: 'application/json'},
-  //   });
-  // }
-
-  // getslabs(){
-  //   return this.http.get<[]>(this.basePath + 'getslabs',{
-  //     headers:{['Content-Type']: 'application/json'},
-  //   });
-  // }
-
-  // getlogs(){
-  //   return this.http.get<[]>(this.basePath + 'getlogs',{
-  //     headers:{['Content-Type']: 'application/json'},
-  //   });
-  // }
-
-  // addconfig(source,destination,distance,slab){
-  //   return this.http.post<[]>(this.basePath + 'fareconfig',[{"sourcecity":source,"destinationcity":destination,"distance":distance,"slab":slab,"username":localStorage.getItem('username')}],this.httpOptions);
-  // }
-
-  // updateconfig(id,slab, nacseater, nacsleeper, acseater, acsleeper, multiseater,multisleeper,distance,recalculate){
-  //     return this.http.put<[]>(this.basePath + 'fareconfig/' + id, {"slab":slab,"distance":distance,"NON_AC_SEATER":nacseater, "AC_SEATER": acseater, "NON_AC_SLEEPER":nacsleeper, "AC_SLEEPER": acsleeper,"MULTI_SEATER": multiseater, "MULTI_SLEEPER": multisleeper,"recalculate":recalculate,"username":localStorage.getItem('username')},this.httpOptions);
-  //   }
-
-  // addslabs(type,priceperkm,slab){
-  //   return this.http.post<[]>(this.basePath + 'rateconfig',{"type":type,"pricePerKM":priceperkm,"slab":slab,"username":localStorage.getItem('username')},this.httpOptions);
-  // }
-
-  // editslabs(id,price){
-  //   return this.http.put<[]>(this.basePath + 'rateconfig/' + id, {"pricePerKM":price,"username":localStorage.getItem('username')},this.httpOptions);
-  // }
-
-
-
-  // getconfig2(){
-  //   let queryString = window.location.search;
-  //   // console.log(window.location.search);
-  //   const urlParams = new URLSearchParams(queryString);
-  //   const product = urlParams.get('sourcecity')
-  //   // console.log(product); 
-  //   // console.log(href.split(href,10));
-  //   return this.http.get<[]>(this.basePath + 'farelist',{
-  //     headers:{['Content-Type']: 'application/json'},
-  //   });
-  // }
-
-  // getrateconfig(){
-  //   return this.http.get<[]>(this.basePath + 'rateconfig',{
-  //     headers:{['Content-Type']: 'application/json'},
-  //   });
-  // }
-
-  // getuser(mobile, password){
-  //   return this.http.post<[]>(this.basePath + 'getuser', {"phonenumber":mobile,"password":password},this.httpOptions);
-  // }
-
   sendotp(mobile){
     return this.http.post<[]>(this.basePath + 'sendotp', {"phonenumber":mobile},this.httpOptions);
   }
@@ -147,5 +76,9 @@ export class DataService {
 
   signup(signup,role,mobile){
     return this.http.put<[]>(this.basePath + "user", {"formdata":signup, "role": role, "phonenumber": mobile},this.httpOptions);
+  }
+
+  addresource(data){
+    return this.http.post<[]>(this.basePath + "resourcesbylogin", data,this.httpOptions);
   }
 }
