@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     else{
       this.dataService.sendotp(this.loginform.value.phoneNumber).subscribe((data:any)=>{
         if(data.success == true){
-          document.getElementById("number").disabled =true;
+          (document.getElementById("number") as HTMLInputElement).disabled =true;
           document.getElementById("sendotp").classList.add("d-none");
           document.getElementById("otp").classList.remove("d-none");
           document.getElementById("submit").classList.remove("d-none");

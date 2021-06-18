@@ -114,6 +114,8 @@ export class SignupComponent implements OnInit {
       this.dataService.signup(this.signup1.value,role,localStorage.getItem('username')).subscribe((data:any)=>{
         if(data.success == true){
           localStorage.setItem('signup',data.data[0].signup);
+          localStorage.setItem('name',data.data[0].name);
+          localStorage.setItem('role',data.data[0].role);
           // document.getElementById("sendotp").classList.add("d-none");
           // document.getElementById("otp").classList.remove("d-none");
           // document.getElementById("submit").classList.remove("d-none");
@@ -160,6 +162,8 @@ export class SignupComponent implements OnInit {
       this.dataService.signup(this.signup2.value,role,localStorage.getItem('username')).subscribe((data:any)=>{
         if(data.success == true){
           localStorage.setItem('signup',data.data[0].signup);
+          localStorage.setItem('name',data.data[0].name);
+          localStorage.setItem('role',data.data[0].role);
           // document.getElementById("sendotp").classList.add("d-none");
           // document.getElementById("otp").classList.remove("d-none");
           // document.getElementById("submit").classList.remove("d-none");
@@ -204,6 +208,8 @@ export class SignupComponent implements OnInit {
       this.dataService.signup(this.signup3.value,role,localStorage.getItem('username')).subscribe((data:any)=>{
         if(data.success == true){
           localStorage.setItem('signup',data.data[0].signup);
+          localStorage.setItem('name',data.data[0].name);
+          localStorage.setItem('role',data.data[0].role);
           // document.getElementById("sendotp").classList.add("d-none");
           // document.getElementById("otp").classList.remove("d-none");
           // document.getElementById("submit").classList.remove("d-none");
