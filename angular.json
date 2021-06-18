@@ -26,12 +26,10 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
-              
-
             ],
             "scripts": [
               "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/jquery/dist/jquery.min.js", 
+              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
@@ -126,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "indiashield"
+    }
+  },
+  "defaultProject": "indiashield",
+  "cli": {
+    "analytics": "05806645-cc9a-4177-a556-3c0ea7275908"
+  }
 }
