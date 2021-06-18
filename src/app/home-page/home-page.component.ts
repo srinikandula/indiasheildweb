@@ -145,7 +145,9 @@ export class HomePageComponent implements OnInit {
       this.dataService.addresource(this.addresource.value).subscribe((data:any)=>{
         if(data.success == true){
           Swal.fire('Success!','Resource Added Successfully !', 'success');
-          window.location.reload();
+          this.modalService.dismissAll();
+          this.addresource.reset();
+          this.search();
         }
         },
         error =>{ 
