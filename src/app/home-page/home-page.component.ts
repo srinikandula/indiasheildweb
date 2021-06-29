@@ -20,6 +20,7 @@ export class HomePageComponent implements OnInit {
   closeResult = '';
   addresource: FormGroup;
   submitted = false;
+  edit:any = {};
 
 
   constructor(private formBuilder: FormBuilder, private dataService: DataService, private modalService: NgbModal) { }
@@ -124,6 +125,19 @@ export class HomePageComponent implements OnInit {
     });
   }
 
+  editdata(content,lead){
+    this.modalService.open(content,{
+      size: 'lg',
+      backdrop : 'static',
+      keyboard : false
+    }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    this.edit = lead;
+  }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -155,6 +169,30 @@ export class HomePageComponent implements OnInit {
           Swal.fire('Error!','Resource Not Added!', 'error');
         });
     }
+  }
+
+  save(){
+    if(!this.edit.name || !this.edit.contactNumber || !this.edit.resource || !this.edit.city || !this.edit.state){
+      alert("* Fields Are Mandatory");
+    }else{
+      this.dataService.editresource(this.edit).subscribe((data:any)=>{
+        if(data.success == true){
+          Swal.fire('Success!','Resource Edited Successfully !', 'success');
+          this.modalService.dismissAll();
+          this.addresource.reset();
+          this.search();
+        }
+        },
+        error =>{ 
+          console.log(error);
+          Swal.fire('Error!','Resource Not Changed!', 'error');
+        });
+    }
+  }
+
+  close(){
+    this.modalService.dismissAll();
+    window.location.reload();
   }
 
 }

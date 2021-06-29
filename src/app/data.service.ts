@@ -11,9 +11,9 @@ export class DataService {
   constructor(private router: Router,
     private http: HttpClient,private activatedRoute: ActivatedRoute) { }
 
-  basePath2 = "http://localhost:5000/api/v1/";
+  basePath = "http://localhost:5010/api/v1/";
   a = window.location.hostname;
-  basePath = "https://indiashieldapi.whizzard.in/api/v1/";
+  basePath2 = "https://indiashieldapi.whizzard.in/api/v1/";
   // basePath = environment.basePath
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,6 +23,7 @@ export class DataService {
 
   logout() {
     localStorage.clear();
+    window.location.reload();
     this.router.navigate(['/']);
   }
 
@@ -80,5 +81,9 @@ export class DataService {
 
   addresource(data){
     return this.http.post<[]>(this.basePath + "resourcesbylogin", data,this.httpOptions);
+  }
+
+  editresource(data){
+    return this.http.put<[]>(this.basePath + "editresource", data,this.httpOptions);
   }
 }
